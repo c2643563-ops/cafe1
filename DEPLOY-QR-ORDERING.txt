@@ -1,0 +1,22 @@
+VELVET CAFE - QR ORDERING DEPLOYMENT
+
+I updated this project so that:
+- QR codes on /tables are generated using the current live website URL (not the old e2b.app demo URL).
+- Scanning a table QR opens /table/1 ... /table/15 and displays the customer menu.
+- Checkout only shows “Order received” after the API confirms the order was saved.
+- Orders can sync between customer phones, cashier and kitchen through Supabase.
+
+IMPORTANT: Complete SUPABASE_SETUP.md before expecting live orders to sync on Vercel.
+The local JSON order file is only a local-development fallback; Vercel does not provide persistent local file storage.
+
+DEPLOY:
+1. Extract this ZIP.
+2. Upload the project folder to a GitHub repository.
+3. Import that repository in Vercel and deploy it as a Next.js project.
+4. Create the Supabase orders table by running the SQL in SUPABASE_SETUP.md.
+5. Add NEXT_PUBLIC_SUPABASE_URL and NEXT_PUBLIC_SUPABASE_ANON_KEY in Vercel > Project > Settings > Environment Variables.
+6. Redeploy.
+7. Visit the deployed site's /tables page. Use the newly generated QR images there; discard the old QR PNG/PDF printouts.
+8. Scan a QR with a phone, place a test order, then check /pos and /kitchen.
+
+Do not share your Supabase keys or Vercel access token in chat. Never expose a Supabase service_role/secret key in a NEXT_PUBLIC_ variable.
